@@ -1,15 +1,62 @@
 {
-  "name": "focus-editor",
-  "version": "1.0.0",
-  "description": "",
+  "name": "Tranqued",
+  "version": "1.0.1",
+  "description": "A tranquil text editor for peaceful and focused writing.",
   "main": "main.js",
   "scripts": {
-    "start": "./node_modules/.bin/electron ."
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "test": "jest"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "electron",
+    "tranquil",
+    "calm",
+    "editor",
+    "text editor",
+    "tranqued"
+  ],
+  "author": {
+    "name": "dokato",
+    "email": "TranquEd@protonmail.com"
+  },
   "license": "ISC",
-  "dependencies": {
-    "electron": "~31.2.1"
+
+  "devDependencies": {
+    "electron": "~31.2.1",
+    "electron-builder": "^24.13.3",
+    "jest": "^29.7.0"
+  },
+  "build": {
+    "appId": "com.yourname.tranqued",
+    "productName": "TranquEd",
+    "copyright": "Copyright © 2025 TranquEd",
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer.js",
+      "index.html",
+      "intro.html",
+      "style.css",
+      "package.json",
+      "assets/"
+    ],
+    "mac": {
+      "icon": "assets/images/icon.png",
+      "category": "public.app-category.productivity"
+    },
+    "win": {
+      "icon": "assets/images/icon.png",
+      "target": "nsis"
+    },
+    "linux": {
+      "icon": "assets/images/icon.png",
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Utility"
+    }
   }
 }

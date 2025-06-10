@@ -1,6 +1,6 @@
-# FocusTime Editor (Electron)
+# TranqEd (Electron)
 
-A simple macOS Electron app to help you focus: start a 25-minute timer and write notes or tasks in a distraction-free editor.
+A simple macOS Electron app to help you focus.
 
 ## Getting Started
 
@@ -14,10 +14,6 @@ A simple macOS Electron app to help you focus: start a 25-minute timer and write
    ```
 
 ## Features
-- Pomodoro-style 25-minute timer
+- Pomodoro-style timer
 - Simple, clean text editor
 - Desktop app for macOS (Electron)
-
----
-
-Feel free to modify and extend!

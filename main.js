@@ -28,9 +28,9 @@ if (typeof app === 'undefined' || typeof BrowserWindow === 'undefined') {
 
     try {
       const { canceled, filePath } = await dialog.showSaveDialog(window, {
-        title: 'Save Your Notes',
-        defaultPath: `focus-notes-${Date.now()}.txt`,
-        buttonLabel: 'Save Notes',
+        title: 'Save Notes - TranqEd',
+        defaultPath: `tranqed-notes-${Date.now()}.txt`,
+        buttonLabel: 'Save',
         filters: [
           { name: 'Text Files', extensions: ['txt'] },
           { name: 'All Files', extensions: ['*'] }
@@ -61,8 +61,8 @@ if (typeof app === 'undefined' || typeof BrowserWindow === 'undefined') {
 
     try {
       const { canceled, filePaths } = await dialog.showOpenDialog(window, {
-        title: 'Load File into Editor',
-        buttonLabel: 'Load File',
+        title: 'Load File - TranqEd',
+        buttonLabel: 'Load',
         filters: [
           { name: 'Text Documents', extensions: ['txt', 'md'] },
           { name: 'All Files', extensions: ['*'] }
@@ -87,6 +87,8 @@ if (typeof app === 'undefined' || typeof BrowserWindow === 'undefined') {
   function createWindow () {
     // Assign to the higher-scoped mainWindow
     mainWindow = new BrowserWindow({
+      show: false, // Don't show the window until content is ready (prevents white flash)
+      icon: path.join(__dirname, 'assets/images/icon.png'),
       width: 800,
       height: 600,
       fullscreen: true, // Retaining this change as per original request
@@ -96,7 +98,22 @@ if (typeof app === 'undefined' || typeof BrowserWindow === 'undefined') {
         contextIsolation: true // Default and recommended
       }
     });
-    mainWindow.loadFile('index.html');
+    mainWindow.loadFile('intro.html');
+
+    mainWindow.once('ready-to-show', () => {
+      if (mainWindow) mainWindow.show();
+    });
+
+    setTimeout(() => {
+      if (mainWindow && !mainWindow.isDestroyed()) {
+        mainWindow.loadFile('index.html');
+      }
+    }, 2500);
+
+    // Handle window being closed during splash screen
+    mainWindow.on('closed', () => {
+      mainWindow = null;
+    });
   }
 
   app.whenReady().then(() => {
@@ -119,8 +136,8 @@ if (typeof app === 'undefined' || typeof BrowserWindow === 'undefined') {
       }
       try {
         const { canceled, filePath } = await dialog.showSaveDialog(mainWindow, {
-          title: 'Save Your Work Before Quitting',
-          defaultPath: `focus-notes-${Date.now()}.txt`,
+          title: 'Save Work Before Quitting - TranqEd',
+          defaultPath: `tranqed-notes-${Date.now()}.txt`,
           buttonLabel: 'Save and Quit',
           filters: [
             { name: 'Text Files', extensions: ['txt'] },

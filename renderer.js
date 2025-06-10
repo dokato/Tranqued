@@ -191,15 +191,23 @@ function applyTheme(themeName) {
   document.body.style.backgroundPosition = 'center';
   document.body.style.backgroundRepeat = 'no-repeat';
 
+  const progressBar = document.getElementById('progress-bar');
+  if (progressBar) {
+    progressBar.classList.remove('progress-bar-yellow');
+  }
+
   if (themeName === 'sky') {
-    document.body.style.backgroundImage = "url('./assets/images/sky.png')";
-    document.body.style.backgroundColor = ''; // Clear background color if image is set
+    document.body.style.backgroundImage = "url('./assets/images/sky2.png')";
+    document.body.style.backgroundColor = '';
+    if (progressBar) {
+      progressBar.classList.add('progress-bar-yellow');
+    }
   } else if (themeName === 'nature') {
     document.body.style.backgroundImage = "url('./assets/images/trees.png')";
-    document.body.style.backgroundColor = ''; // Clear background color if image is set
+    document.body.style.backgroundColor = '';
   } else { // Basic theme
     document.body.style.backgroundImage = 'none';
-    document.body.style.backgroundColor = '#f0f2f5'; // Default background color
+    document.body.style.backgroundColor = '#f0f2f5';
   }
 }
 
