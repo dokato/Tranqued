@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TranqEd - Loading</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #EBEBEB; /* Match main app background for consistency */
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased; /* Smoother text rendering */
+            font-family: sans-serif;
+        }
+        #logo-container {
+            animation: fadeInOut 3s ease-in-out forwards;
+            opacity: 0; /* Start transparent */
+        }
+        #logo {
+            max-width: 80vw; /* Responsive max width */
+            max-height: 80vh; /* Responsive max height */
+            display: block; /* Remove extra space below image */
+        }
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: scale(0.95); }
+            16.67% { opacity: 1; transform: scale(1); } /* Fade in complete at 0.5s (1/6th of 3s) */
+            83.33% { opacity: 1; transform: scale(1); } /* Hold visible until 2.5s (5/6th of 3s) */
+            100% { opacity: 0; transform: scale(0.95); }
+        }
+    </style>
+</head>
+<body>
+    <div id="logo-container">
+        <img id="logo" src="./assets/images/logo.png" alt="TranqEd Logo">
+    </div>
+</body>
+</html>

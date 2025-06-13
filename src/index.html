@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TranqEd</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="settings-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div id="app-container">
+    <div id="editor-column">
+      <textarea id="editor" placeholder="Start writing your thoughts, tasks, or notes..."></textarea>
+      <button id="startBtn">Start Focus</button>
+    </div>
+  </div>
+
+  <div id="settings-modal-overlay">
+    <div id="settings-modal-content">
+      <span class="modal-close-btn">&times;</span>
+      <h1>Settings</h1>
+      <button id="loadBtn">Load file</button>
+      <button id="saveBtn">Export file</button>
+      <div class="time-input-container">
+        <label for="focusTimeSlider">Focus Time (min): <span id="focusTimeValue">25</span> min</label>
+        <input type="range" id="focusTimeSlider" value="25" min="5" max="60" style="width: 80%; margin-top: 5px;">
+      </div>
+      <div class="checkbox-container">
+        <input type="checkbox" id="soundToggle" checked>
+        <label for="soundToggle">Typewriter Sound</label>
+      </div>
+      <div class="theme-selector-container">
+        <p>Theme:</p>
+        <div class="theme-options">
+          <label><input type="radio" name="theme" value="basic" id="themeBasic" checked> Basic</label>
+          <label><input type="radio" name="theme" value="sky" id="themeSky"> Sky</label>
+          <label><input type="radio" name="theme" value="nature" id="themeNature"> Nature</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <svg width="0" height="0" style="position:absolute;">
+    <defs>
+      <clipPath id="waveClipPath" clipPathUnits="objectBoundingBox">
+        <path d="M0,1 L0,0.400 Q0.083,0.100 0.167,0.400 T0.333,0.400 Q0.417,0.100 0.500,0.400 T0.667,0.400 Q0.750,0.100 0.833,0.400 T1.000,0.400 L1,1 Z" />
+      </clipPath>
+    </defs>
+  </svg>
+  <div id="progress-bar-container">
+    <div id="progress-bar"></div>
+  </div>
+  <script src="renderer.js"></script>
+</body>
+</html>
